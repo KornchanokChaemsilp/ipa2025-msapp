@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>App</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <h1>You are calling me from {{request.remote_addr}}</h1>
+    <form method="POST" action="/add">
+        <input name="ipaddress" type="text" placeholder="IP Address">
+        <input name="username" type="text" placeholder="Username">
+        <input name="password" type="text" placeholder="Password">
+        <button type="submit">Add Comment</button>
+    </form>
+
+    <ul>
+        {% for router in data %}
+        <li>
+            {{ router.ip }} - {{ router.username }}
+            <form method="POST" action="{{ url_for('delete_router') }}" style="display: inline;">
+                <input type="hidden" name="idx" value="{{ router._id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
