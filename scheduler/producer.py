@@ -7,7 +7,7 @@ def produce(host, body):
     rabbitmq_username = os.getenv("RABBITMQ_DEFAULT_USER")
     rabbitmq_password = os.getenv("RABBITMQ_DEFAULT_PASS")
 
-    print(rabbitmq_username, rabbitmq_password)
+    # print(rabbitmq_username, rabbitmq_password)
 
     credentials = pika.PlainCredentials(rabbitmq_username, rabbitmq_password)
 

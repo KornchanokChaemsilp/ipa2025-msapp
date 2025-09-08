@@ -38,6 +38,7 @@ services:
       DB_NAME: "mydatabase"
       RABBITMQ_DEFAULT_USER: "${RABBITMQ_DEFAULT_USER}"
       RABBITMQ_DEFAULT_PASS: "${RABBITMQ_DEFAULT_PASS}"
+      PYTHONUNBUFFERED: 1
   
   rabbitmq:
     image: rabbitmq:3-management
@@ -48,6 +49,23 @@ services:
       - app-net
     env_file:
       - .env
+  
+  worker:
+    build: ./worker
+    depends_on:
+      - mongo
+      - scheduler
+      - rabbitmq
+    networks:
+      - app-net
+    env_file:
+      - .env
+    environment:
+      MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/"
+      DB_NAME: "mydatabase"
+      RABBITMQ_DEFAULT_USER: "${RABBITMQ_DEFAULT_USER}"
+      RABBITMQ_DEFAULT_PASS: "${RABBITMQ_DEFAULT_PASS}"
+      PYTHONUNBUFFERED: 1
 
 volumes:
   mongo-data:

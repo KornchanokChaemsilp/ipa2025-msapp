@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>App</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <h1>Router: {% data[0].router_ip %}</data></h1>
+    <ul>
+        {% for i in data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Interface</th>
+                    <th>IP Address</th>
+                    <th>Status</th>
+                    <th>Protocol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Laptop</td>
+                    <td>Electronics</td>
+                    <td>$1200</td>
+                    <td>$1200</td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </ul>
+</body>
+</html>
