@@ -1,1 +1,13 @@
-body {background: lightsteelblue;}
+body {
+    background: lightsteelblue;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse; /* Essential for clean borders */
+}
+th, td {
+    border: 1px solid #0f0f0f;
+    padding: 8px;
+    text-align: left;
+}

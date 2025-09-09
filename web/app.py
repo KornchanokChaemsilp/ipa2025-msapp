@@ -20,17 +20,18 @@ client = MongoClient(mongo_uri)
 mydb = client[db_name]
 mycol = mydb["routers"]
 
-# mycol2 = mydb["interface_status"]
+mycol2 = mydb["interface_status"]
 
 @app.route("/")
 def main():
     data = mycol.find()
     return render_template("index.html", data=data)
 
-# @app.route("/router/<ip>")
-# def main():
-#     data = mycol2.find_one({"router_ip": ip})
-#     return render_template("router_detail.html", data=data)
+@app.route("/router/<ip>")
+def show_router(ip):
+    data = mycol2.find({"router_ip": ip}).sort("timestamp", -1).limit(3)
+    print(data)
+    return render_template("router_detail.html", data=data, ip=ip)
 
 @app.route("/add", methods=["POST"])
 def add_router():

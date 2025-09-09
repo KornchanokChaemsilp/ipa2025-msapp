@@ -4,9 +4,8 @@
     <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-    <h1>Router: {% data[0].router_ip %}</data></h1>
+    <h1>Router: {{ip}}</data></h1>
     <ul>
-        {% for i in data %}
         <table>
             <thead>
                 <tr>
@@ -18,16 +17,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Laptop</td>
-                    <td>Electronics</td>
-                    <td>$1200</td>
-                    <td>$1200</td>
-                </tr>
+                {% for i in data %}
+                    {% for j in i.interfaces %}
+                    <tr>
+                        <td>{{i.timestamp}}</td>
+                        <td>{{j.interface}}</td>
+                        <td>{{j.ip_address}}</td>
+                        <td>{{j.status}}</td>
+                        <td>{{j.proto}}</td>
+                    </tr>
+                    {% endfor %}
+                {% endfor %}
             </tbody>
         </table>
-        {% endfor %}
     </ul>
 </body>
 </html>
