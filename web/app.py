@@ -44,7 +44,7 @@ def add_router():
 
     if ipaddress and username and password:
         # data.append({"yourname": yourname, "message": message})
-        mycol.insert_one({"ip": ipaddress, "username": username,\
+        mycol.insert_one({"ip": ipaddress, "username": username, 
         "password": password})
     return redirect("/")
 
