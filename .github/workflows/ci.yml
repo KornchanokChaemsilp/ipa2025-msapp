@@ -42,10 +42,10 @@ jobs:
 
     - name: Build & Push Docker Images
       run: |
-        docker build -t kornchanokchaemsilp/worker:latest ./worker
-        docker build -t kornchanokchaemsilp/scheduler:latest ./scheduler
-        docker build -t kornchanokchaemsilp/web:latest ./web
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/worker:latest ./worker
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/scheduler:latest ./scheduler
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/web:latest ./web
 
-        docker push kornchanokchaemsilp/worker:latest
-        docker push kornchanokchaemsilp/scheduler:latest
-        docker push kornchanokchaemsilp/web:latest
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/worker:latest
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/scheduler:latest
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/web:latest
