@@ -1,5 +1,3 @@
-import time, pika
-
 from consumer import consume
 
 rab = "rabbitmq"

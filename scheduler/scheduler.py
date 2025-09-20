@@ -1,5 +1,4 @@
-import time, pika
-
+import time
 from producer import produce
 from bson import json_util
 from database import get_router_info
